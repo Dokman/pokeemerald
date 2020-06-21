@@ -1,6 +1,16 @@
 #ifndef GUARD_CONSTANTS_SPECIES_H
 #define GUARD_CONSTANTS_SPECIES_H
 
+// Species with associated to breeding item effects. Remove them if they're properly placed here.
+#define SPECIES_MUNCHLAX  0
+#define SPECIES_HAPPINY   0
+#define SPECIES_MIMEJR    0
+#define SPECIES_CHINGLING 0
+#define SPECIES_BONSLY    0
+#define SPECIES_BUDEW     0
+#define SPECIES_MANTYKE   0
+#define SPECIES_MUNCHLAX  0
+
 #define SPECIES_NONE 0
 #define SPECIES_BULBASAUR 1
 #define SPECIES_IVYSAUR 2
