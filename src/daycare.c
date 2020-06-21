@@ -732,23 +732,23 @@ static void AlterEggSpeciesWithIncenseItem(u16 *species, struct DayCare *daycare
     motherItem = GetBoxMonData(&daycare->mons[0].mon, MON_DATA_HELD_ITEM);
     fatherItem = GetBoxMonData(&daycare->mons[1].mon, MON_DATA_HELD_ITEM);
 
-    if (*species == SPECIES_WYNAUT && (motherItem == ITEM_LAX_INCENSE || fatherItem == ITEM_LAX_INCENSE))
+    if (*species == SPECIES_WYNAUT && motherItem != ITEM_LAX_INCENSE && fatherItem != ITEM_LAX_INCENSE)
         *species = SPECIES_WOBBUFFET;
-    else if (*species == SPECIES_AZURILL && (motherItem == ITEM_SEA_INCENSE || fatherItem == ITEM_SEA_INCENSE))
+    else if (*species == SPECIES_AZURILL && motherItem != ITEM_SEA_INCENSE && fatherItem != ITEM_SEA_INCENSE)
         *species = SPECIES_MARILL;
-    else if (*species == SPECIES_MUNCHLAX && (motherItem == ITEM_FULL_INCENSE || fatherItem == ITEM_FULL_INCENSE))
+    else if (*species == SPECIES_MUNCHLAX && motherItem != ITEM_FULL_INCENSE && fatherItem != ITEM_FULL_INCENSE)
         *species = SPECIES_SNORLAX;
-    else if (*species == SPECIES_HAPPINY && (motherItem == ITEM_LUCK_INCENSE || fatherItem == ITEM_LUCK_INCENSE))
+    else if (*species == SPECIES_HAPPINY && motherItem != ITEM_LUCK_INCENSE && fatherItem != ITEM_LUCK_INCENSE)
         *species = SPECIES_CHANSEY;
-    else if (*species == SPECIES_MIMEJR && (motherItem == ITEM_ODD_INCENSE || fatherItem == ITEM_ODD_INCENSE))
+    else if (*species == SPECIES_MIMEJR && motherItem != ITEM_ODD_INCENSE && fatherItem != ITEM_ODD_INCENSE)
         *species = SPECIES_MR_MIME;
-    else if (*species == SPECIES_CHINGLING && (motherItem == ITEM_PURE_INCENSE || fatherItem == ITEM_PURE_INCENSE))
+    else if (*species == SPECIES_CHINGLING && motherItem != ITEM_PURE_INCENSE && fatherItem != ITEM_PURE_INCENSE)
         *species = SPECIES_CHIMECHO;
-    else if (*species == SPECIES_BONSLY && (motherItem == ITEM_ROCK_INCENSE || fatherItem == ITEM_ROCK_INCENSE))
+    else if (*species == SPECIES_BONSLY && motherItem != ITEM_ROCK_INCENSE && fatherItem != ITEM_ROCK_INCENSE)
         *species = SPECIES_SUDOWOODO;
-    else if (*species == SPECIES_BUDEW && (motherItem == ITEM_ROSE_INCENSE || fatherItem == ITEM_ROSE_INCENSE))
+    else if (*species == SPECIES_BUDEW && motherItem != ITEM_ROSE_INCENSE && fatherItem != ITEM_ROSE_INCENSE)
         *species = SPECIES_ROSELIA;
-    else if (*species == SPECIES_MANTYKE && (motherItem == ITEM_WAVE_INCENSE || fatherItem == ITEM_WAVE_INCENSE))
+    else if (*species == SPECIES_MANTYKE && motherItem != ITEM_WAVE_INCENSE && fatherItem != ITEM_WAVE_INCENSE)
         *species = SPECIES_MANTINE;
 }
 
