@@ -907,9 +907,9 @@
 #define FORMS_START SPECIES_ZARUDE
 
 // Gen 3 Forms
-#define SPECIES_DEOXYS_ATTACK           FORMS_START + 1 // Not implemented.
-#define SPECIES_DEOXYS_DEFENSE          FORMS_START + 2 // Not implemented.
-#define SPECIES_DEOXYS_SPEED            FORMS_START + 3 // Not implemented.
+#define SPECIES_DEOXYS_ATTACK           FORMS_START + 1 // Not adapted.
+#define SPECIES_DEOXYS_DEFENSE          FORMS_START + 2 // Not adapted.
+#define SPECIES_DEOXYS_SPEED            FORMS_START + 3 // Not adapted.
 // Gen 4 Forms
 #define SPECIES_BURMY_SANDY             FORMS_START + 4
 #define SPECIES_BURMY_TRASH             FORMS_START + 5
@@ -1164,9 +1164,9 @@
 
 #define BATTLE_FORMS_START              SPECIES_ZARUDE_DADA
 
-#define SPECIES_CASTFORM_SUNNY          BATTLE_FORMS_START + 1
-#define SPECIES_CASTFORM_RAINY          BATTLE_FORMS_START + 2
-#define SPECIES_CASTFORM_SNOWY          BATTLE_FORMS_START + 3
+#define SPECIES_CASTFORM_SUNNY          BATTLE_FORMS_START + 1 // Not adapted.
+#define SPECIES_CASTFORM_RAINY          BATTLE_FORMS_START + 2 // Not adapted.
+#define SPECIES_CASTFORM_SNOWY          BATTLE_FORMS_START + 3 // Not adapted.
 #define SPECIES_MELOETTA_PIROUETTE      BATTLE_FORMS_START + 4
 #define SPECIES_AEGISLASH_BLADE         BATTLE_FORMS_START + 5
 #define SPECIES_ZYGARDE_COMPLETE        BATTLE_FORMS_START + 6 // Not implemented.
