@@ -25,7 +25,6 @@ static void Debug_ShowMenu(void (*HandleInput)(u8), struct ListMenuTemplate LMte
 void Debug_ShowMainMenu(void);
 static void Debug_DestroyMenu(u8);
 
-static void DebugAction_PlayBoo(u8);
 static void DebugAction_CheckSaveBlock(u8);
 static void DebugAction_CheckWallClock(u8);
 static void DebugAction_SetWallClock(u8);
@@ -41,7 +40,6 @@ static void DebugAction_OpenFlagsMenu(u8);
 static void DebugAction_OpenSub1(u8);
 static void DebugTask_HandleMenuInput_Main(u8);
 static void DebugTask_HandleMenuInput_Utilities(u8);
-static void DebugTask_HandleMenuInput_Sub1(u8);
 
 extern u8 Debug_CheckSaveBlock[];
 extern u8 PlayersHouse_2F_EventScript_SetWallClock[];
@@ -51,10 +49,6 @@ extern u8 Debug_SetPokedexFlags[];
 // Main Menu
 static const u8 gDebugText_Utilities[] = _("Utilities");
 static const u8 gDebugText_Flags[] = _("Flags");
-static const u8 gDebugText_Option3[] = _("Option 3");
-static const u8 gDebugText_Option4[] = _("Option 4");
-static const u8 gDebugText_Option5[] = _("Option 5");
-static const u8 gDebugText_Option6[] = _("Option 6");
 static const u8 gDebugText_Cancel[] = _("Cancel");
 
 static const u8 gDebugText_SaveBlockSpace[] = _("SaveBlock Space");
@@ -62,7 +56,6 @@ static const u8 gDebugText_CheckWallClock[] = _("Check Wall Clock");
 static const u8 gDebugText_SetWallClock[] = _("Set Wall Clock");
 static const u8 gDebugText_WatchCredits[] = _("Watch Credits");
 
-static const u8 gDebugText_StoryFlags[] = _("Story Flags");
 static const u8 gDebugText_SetPokedexFlags[] = _("Set Pokédex Flags");
 static const u8 gDebugText_SwitchDex[] = _("Pokédex ON/OFF");
 static const u8 gDebugText_SwitchNationalDex[] = _("NatDex ON/OFF");
@@ -77,11 +70,7 @@ static const struct ListMenuItem sDebugMenu_Items_Main[] =
 {
     [0] = {gDebugText_Utilities, 0},
     [1] = {gDebugText_Flags, 1},
-    [2] = {gDebugText_Option3, 2},
-    [3] = {gDebugText_Option4, 3},
-    [4] = {gDebugText_Option5, 4},
-    [5] = {gDebugText_Option6, 5},
-    [6] = {gDebugText_Cancel, 6}
+    [2] = {gDebugText_Cancel, 6}
 };
 
 static const struct ListMenuItem sDebugMenu_Items_Utilities[] =
@@ -94,11 +83,10 @@ static const struct ListMenuItem sDebugMenu_Items_Utilities[] =
 
 static const struct ListMenuItem sDebugMenu_Items_Flags[] =
 {
-    [0] = {gDebugText_StoryFlags, 0},
-    [1] = {gDebugText_SetPokedexFlags, 1},
-    [2] = {gDebugText_SwitchDex, 2},
-    [3] = {gDebugText_SwitchNationalDex, 3},
-    [4] = {gDebugText_SwitchPokeNav, 4},
+    [0] = {gDebugText_SetPokedexFlags, 0},
+    [1] = {gDebugText_SwitchDex, 1},
+    [2] = {gDebugText_SwitchNationalDex, 2},
+    [3] = {gDebugText_SwitchPokeNav, 3},
 };
 
 static const struct ListMenuItem sDebugMenu_Items_Sub1[] =
@@ -111,11 +99,7 @@ static void (*const sDebugMenu_Actions_Main[])(u8) =
 {
     [0] = DebugAction_OpenUtilitiesMenu,
     [1] = DebugAction_OpenFlagsMenu,
-    [2] = NULL,
-    [3] = NULL,
-    [4] = NULL,
-    [5] = DebugAction_OpenSub1,
-    [6] = DebugAction_Cancel
+    [3] = DebugAction_Cancel
 };
 
 static void (*const sDebugMenu_Actions_SaveBlocks[])(u8) =
@@ -128,19 +112,11 @@ static void (*const sDebugMenu_Actions_SaveBlocks[])(u8) =
 
 static void (*const sDebugMenu_Actions_Flags[])(u8) =
 {
-    [0] = DebugAction_CheckSaveBlock,
-    [1] = DebugAction_SetPokedexFlags,
-    [2] = DebugAction_SwitchDex,
-    [3] = DebugAction_SwitchNatDex,
-    [4] = DebugAction_SwitchPokeNav,
+    [0] = DebugAction_SetPokedexFlags,
+    [1] = DebugAction_SwitchDex,
+    [2] = DebugAction_SwitchNatDex,
+    [3] = DebugAction_SwitchPokeNav,
 };
-
-static void (*const sDebugMenu_Actions_Sub1[])(u8) =
-{
-    [0] = DebugAction_PlayBoo,
-    [1] = DebugAction_Cancel
-};
-
 static const struct WindowTemplate sDebugMenuWindowTemplate =
 {
     .bg = 0,
@@ -288,24 +264,6 @@ static void DebugTask_HandleMenuInput_Flags(u8 taskId)
         Debug_ShowMainMenu();
     }
 }
-static void DebugTask_HandleMenuInput_Sub1(u8 taskId)
-{
-    void (*func)(u8);
-    u32 input = ListMenu_ProcessInput(gTasks[taskId].data[0]);
-
-    if (gMain.newKeys & A_BUTTON)
-    {
-        PlaySE(SE_SELECT);
-        if ((func = sDebugMenu_Actions_Sub1[input]) != NULL)
-            func(taskId);
-    }
-    else if (gMain.newKeys & B_BUTTON)
-    {
-        PlaySE(SE_SELECT);
-        Debug_DestroyMenu(taskId);
-        Debug_ShowMainMenu();
-    }
-}
 
 // Open sub-menus
 static void DebugAction_OpenUtilitiesMenu(u8 taskId)
@@ -318,21 +276,12 @@ static void DebugAction_OpenFlagsMenu(u8 taskId)
     Debug_DestroyMenu(taskId);
     Debug_ShowMenu(DebugTask_HandleMenuInput_Flags, sDebugMenu_ListTemplate_Flags);
 }
-static void DebugAction_OpenSub1(u8 taskId)
-{
-    Debug_DestroyMenu(taskId);
-    Debug_ShowMenu(DebugTask_HandleMenuInput_Sub1, sDebugMenu_ListTemplate_Sub1);
-}
 
 // Actions
 static void DebugAction_Cancel(u8 taskId)
 {
     Debug_DestroyMenu(taskId);
     EnableBothScriptContexts();
-}
-static void DebugAction_PlayBoo(u8 taskId)
-{
-    PlayBGM(MUS_BATTLE33);
 }
 static void DebugAction_CheckSaveBlock(u8 taskId)
 {
