@@ -32,6 +32,8 @@ static void DebugAction_SetPokedexFlags(u8);
 static void DebugAction_SwitchDex(u8);
 static void DebugAction_SwitchNatDex(u8);
 static void DebugAction_SwitchPokeNav(u8);
+static void DebugAction_SetFlyFlags(u8);
+static void DebugAction_SetBadgeFlags(u8);
 static void DebugAction_Credits(u8);
 static void DebugAction_Cancel(u8);
 
@@ -60,6 +62,8 @@ static const u8 gDebugText_SetPokedexFlags[] = _("Set Pokédex Flags");
 static const u8 gDebugText_SwitchDex[] = _("Pokédex ON/OFF");
 static const u8 gDebugText_SwitchNationalDex[] = _("NatDex ON/OFF");
 static const u8 gDebugText_SwitchPokeNav[] = _("PokéNav ON/OFF");
+static const u8 gDebugText_SetFlyFlags[] = _("Can Fly Anywhere");
+static const u8 gDebugText_GetAllBadges[] = _("Get all badges");
 
 static const u8 gDebugText_None[] = _("None");
 
@@ -87,6 +91,8 @@ static const struct ListMenuItem sDebugMenu_Items_Flags[] =
     [1] = {gDebugText_SwitchDex, 1},
     [2] = {gDebugText_SwitchNationalDex, 2},
     [3] = {gDebugText_SwitchPokeNav, 3},
+    [4] = {gDebugText_SetFlyFlags, 4},
+    [5] = {gDebugText_GetAllBadges, 5},
 };
 
 static const struct ListMenuItem sDebugMenu_Items_Sub1[] =
@@ -102,7 +108,7 @@ static void (*const sDebugMenu_Actions_Main[])(u8) =
     [3] = DebugAction_Cancel
 };
 
-static void (*const sDebugMenu_Actions_SaveBlocks[])(u8) =
+static void (*const sDebugMenu_Actions_Utilities[])(u8) =
 {
     [0] = DebugAction_CheckSaveBlock,
     [1] = DebugAction_CheckWallClock,
@@ -116,6 +122,8 @@ static void (*const sDebugMenu_Actions_Flags[])(u8) =
     [1] = DebugAction_SwitchDex,
     [2] = DebugAction_SwitchNatDex,
     [3] = DebugAction_SwitchPokeNav,
+    [4] = DebugAction_SetFlyFlags,
+    [5] = DebugAction_SetBadgeFlags,
 };
 static const struct WindowTemplate sDebugMenuWindowTemplate =
 {
@@ -236,7 +244,7 @@ static void DebugTask_HandleMenuInput_Utilities(u8 taskId)
     if (gMain.newKeys & A_BUTTON)
     {
         PlaySE(SE_SELECT);
-        if ((func = sDebugMenu_Actions_SaveBlocks[input]) != NULL)
+        if ((func = sDebugMenu_Actions_Utilities[input]) != NULL)
             func(taskId);
     }
     else if (gMain.newKeys & B_BUTTON)
@@ -351,6 +359,39 @@ static void DebugAction_SwitchPokeNav(u8 taskId)
         FlagSet(FLAG_SYS_POKENAV_GET);
         PlaySE(SE_PC_LOGIN);
     }
+}
+static void DebugAction_SetFlyFlags(u8 taskId)
+{
+    FlagSet(FLAG_VISITED_LITTLEROOT_TOWN);
+    FlagSet(FLAG_VISITED_OLDALE_TOWN);
+    FlagSet(FLAG_VISITED_DEWFORD_TOWN);
+    FlagSet(FLAG_VISITED_LAVARIDGE_TOWN);
+    FlagSet(FLAG_VISITED_FALLARBOR_TOWN);
+    FlagSet(FLAG_VISITED_VERDANTURF_TOWN);
+    FlagSet(FLAG_VISITED_PACIFIDLOG_TOWN);
+    FlagSet(FLAG_VISITED_PETALBURG_CITY);
+    FlagSet(FLAG_VISITED_SLATEPORT_CITY);
+    FlagSet(FLAG_VISITED_MAUVILLE_CITY);
+    FlagSet(FLAG_VISITED_RUSTBORO_CITY);
+    FlagSet(FLAG_VISITED_FORTREE_CITY);
+    FlagSet(FLAG_VISITED_LILYCOVE_CITY);
+    FlagSet(FLAG_VISITED_MOSSDEEP_CITY);
+    FlagSet(FLAG_VISITED_SOOTOPOLIS_CITY);
+    FlagSet(FLAG_VISITED_EVER_GRANDE_CITY);
+    FlagSet(FLAG_LANDMARK_POKEMON_LEAGUE);
+    PlaySE(SE_PC_LOGIN);
+}
+static void DebugAction_SetBadgeFlags(u8 taskId)
+{
+    FlagSet(FLAG_BADGE01_GET);
+    FlagSet(FLAG_BADGE02_GET);
+    FlagSet(FLAG_BADGE03_GET);
+    FlagSet(FLAG_BADGE04_GET);
+    FlagSet(FLAG_BADGE05_GET);
+    FlagSet(FLAG_BADGE06_GET);
+    FlagSet(FLAG_BADGE07_GET);
+    FlagSet(FLAG_BADGE08_GET);
+    PlaySE(SE_PC_LOGIN);
 }
 static void DebugAction_Credits(u8 taskId)
 {
