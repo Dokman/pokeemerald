@@ -964,7 +964,7 @@ bool8 TryDoDiveWarp(struct MapPosition *position, u16 metatileBehavior)
         {
             StoreInitialPlayerAvatarState();
             DoDiveWarp();
-            PlaySE(SE_W291);
+            PlaySE(SE_M_DIVE);
             return TRUE;
         }
     }
@@ -974,7 +974,7 @@ bool8 TryDoDiveWarp(struct MapPosition *position, u16 metatileBehavior)
         {
             StoreInitialPlayerAvatarState();
             DoDiveWarp();
-            PlaySE(SE_W291);
+            PlaySE(SE_M_DIVE);
             return TRUE;
         }
     }
