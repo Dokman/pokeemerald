@@ -34,6 +34,7 @@ static void DebugAction_SwitchNatDex(u8);
 static void DebugAction_SwitchPokeNav(u8);
 static void DebugAction_SetFlyFlags(u8);
 static void DebugAction_SetBadgeFlags(u8);
+static void DebugAction_CollisionOnOff(u8);
 static void DebugAction_Credits(u8);
 static void DebugAction_Cancel(u8);
 
@@ -64,6 +65,7 @@ static const u8 gDebugText_SwitchNationalDex[] = _("NatDex ON/OFF");
 static const u8 gDebugText_SwitchPokeNav[] = _("PokéNav ON/OFF");
 static const u8 gDebugText_SetFlyFlags[] = _("Can Fly Anywhere");
 static const u8 gDebugText_GetAllBadges[] = _("Get all badges");
+static const u8 gDebugText_SwitchCollision[] = _("Collision ON/OFF");
 
 static const u8 gDebugText_None[] = _("None");
 
@@ -93,6 +95,7 @@ static const struct ListMenuItem sDebugMenu_Items_Flags[] =
     [3] = {gDebugText_SwitchPokeNav, 3},
     [4] = {gDebugText_SetFlyFlags, 4},
     [5] = {gDebugText_GetAllBadges, 5},
+    [6] = {gDebugText_SwitchCollision, 6},
 };
 
 static const struct ListMenuItem sDebugMenu_Items_Sub1[] =
@@ -124,6 +127,7 @@ static void (*const sDebugMenu_Actions_Flags[])(u8) =
     [3] = DebugAction_SwitchPokeNav,
     [4] = DebugAction_SetFlyFlags,
     [5] = DebugAction_SetBadgeFlags,
+    [6] = DebugAction_CollisionOnOff,
 };
 static const struct WindowTemplate sDebugMenuWindowTemplate =
 {
@@ -392,6 +396,19 @@ static void DebugAction_SetBadgeFlags(u8 taskId)
     FlagSet(FLAG_BADGE07_GET);
     FlagSet(FLAG_BADGE08_GET);
     PlaySE(SE_PC_LOGIN);
+}
+static void DebugAction_CollisionOnOff(u8 taskId)
+{
+    if(FlagGet(FLAG_SYS_NO_COLLISION))
+    {
+        FlagClear(FLAG_SYS_NO_COLLISION);
+        PlaySE(SE_PC_OFF);
+    }
+    else
+    {
+        FlagSet(FLAG_SYS_NO_COLLISION);
+        PlaySE(SE_PC_LOGIN);
+    }
 }
 static void DebugAction_Credits(u8 taskId)
 {
