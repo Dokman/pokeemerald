@@ -3445,7 +3445,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT] =
         .flags = FLAG_MAKES_CONTACT | FLAG_PROTECT_AFFECTED,
     },
 
-    [MOVE_SMELLING_SALT] =
+    [MOVE_SMELLING_SALTS] =
     {
         .effect = EFFECT_SMELLINGSALT,
         .power = 60,

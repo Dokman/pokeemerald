@@ -280,7 +280,7 @@ gBattleAnims_Moves::
 	.4byte Move_MEMENTO
 	.4byte Move_FACADE
 	.4byte Move_FOCUS_PUNCH
-	.4byte Move_SMELLING_SALT
+	.4byte Move_SMELLING_SALTS
 	.4byte Move_FOLLOW_ME
 	.4byte Move_NATURE_POWER
 	.4byte Move_CHARGE
@@ -3535,7 +3535,7 @@ Move_FACADE:
 	loopsewithpan SE_M_SWAGGER, SOUND_PAN_ATTACKER, 24, 3
 	end
 
-Move_SMELLING_SALT:
+Move_SMELLING_SALTS:
 	loadspritegfx ANIM_TAG_TAG_HAND
 	loadspritegfx ANIM_TAG_SMELLINGSALT_EFFECT
 	createsprite gSmellingSaltsHandSpriteTemplate, ANIM_TARGET, 2, ANIM_TARGET, 0, 2
