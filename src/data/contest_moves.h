@@ -2109,7 +2109,7 @@ const struct ContestMove gContestMoves[MOVES_COUNT] =
         .comboMoves = {COMBO_STARTER_FOCUS_ENERGY},
     },
 
-    [MOVE_SMELLING_SALT] =
+    [MOVE_SMELLING_SALTS] =
     {
         .effect = CONTEST_EFFECT_STARTLE_PREV_MON,
         .contestCategory = CONTEST_CATEGORY_SMART,
