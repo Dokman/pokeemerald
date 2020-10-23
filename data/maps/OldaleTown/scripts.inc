@@ -350,6 +350,63 @@ OldaleTown_Movement_ReturnToOriginalPosition: @ 81E918B
 	walk_left
 	step_end
 
+#if GAME_LANGUAGE == LANGUAGE_SPANISH
+OldaleTown_Text_SavingMyProgress: @ 81E918E
+	.string "Quiero descansar un ratito\n"
+	.string "así que voy a guardar mi partida.$"
+
+OldaleTown_Text_IWorkAtPokemonMart: @ 81E91C0
+	.string "¡Hola!\n"
+	.string "Trabajo en la Tienda Pokémon.\p"
+	.string "¡Querrías venir conmigo?$"
+
+OldaleTown_Text_ThisIsAPokemonMart: @ 81E91FD
+	.string "ésta es la Tienda Pokémon.\n"
+	.string "Se reconoce por el tejado azul.\p"
+	.string "Vendemos de todo, incluso Poké Balls\n"
+	.string "para atrapar Pokémon.\p"
+	.string "Mira, te voy a hacer un regalo como\n"
+	.string "parte de nuestra promoción.$"
+
+OldaleTown_Text_PotionExplanation: @ 81E92AF
+	.string "Puedes usar una Poción en cualquier\n"
+	.string "momento, así que a veces puede ser más\l"
+	.string "útil que buscar un Centro Pokémon.$"
+
+OldaleTown_Text_WaitDontComeInHere: @ 81E9313
+	.string "¡Nooooo! ¡No te muevas!\n"
+	.string "¡Ni se te ocurra pisar aquí!\p"
+	.string "Acabo de descubrir las huellas\n"
+	.string "de un Pokémon raro.\p"
+	.string "Espera hasta que termine de\n"
+	.string "hacer mi bosquejo, ¿vale?$"
+
+OldaleTown_Text_DiscoveredFootprints: @ 81E939A
+	.string "Acabo de descubrir las huellas\n"
+	.string "de un Pokémon raro.\p"
+	.string "Espera hasta que termine de\n"
+	.string "hacer mi bosquejo, ¿vale?$"
+
+OldaleTown_Text_FinishedSketchingFootprints: @ 81E93F8
+	.string "Ya he acabado con el bosquejo de las\n"
+	.string "huellas del Pokémon raro.\p"
+	.string "Y ahora me doy cuenta de que...\n"
+	.string "eran mis propias huellas, snif...$"
+
+OldaleTown_Text_MayLetsGoBack: @ 81E9462
+	.string "Aura: {PLAYER}{KUN}!\n"
+	.string "¡Ven aquí, deprisa!\l"
+	.string "¡Vamos al Laboratio!$"
+
+OldaleTown_Text_BrendanLetsGoBack: @ 81E948A
+	.string "Brendan: I'm heading back to my dad's\n"
+	.string "Lab now.\l"
+	.string "{PLAYER}, you should hustle back, too.$"
+
+OldaleTown_Text_CitySign: @ 81E94DA
+	.string "Pueblo Escaso\n"
+	.string "“Donde nunca pasa nada”$"
+#else
 OldaleTown_Text_SavingMyProgress: @ 81E918E
 	.string "I want to take a rest, so I'm saving my\n"
 	.string "progress.$"
@@ -405,4 +462,4 @@ OldaleTown_Text_BrendanLetsGoBack: @ 81E948A
 OldaleTown_Text_CitySign: @ 81E94DA
 	.string "Oldale Town\n"
 	.string "“Where things start off scarce.”$"
-
+#endif
