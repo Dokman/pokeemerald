@@ -293,6 +293,71 @@ Route103_EventScript_Isabelle:: @ 81EC78F
 	msgbox Route103_Text_IsabellePostBattle, MSGBOX_AUTOCLOSE
 	end
 
+#if GAME_LANGUAGE == LANGUAGE_SPANISH
+Route103_Text_MayRoute103Pokemon: @ 81EC7A6
+	.string "Aura: Veamos… En la Ruta 103 puedes\n"
+	.string "encontrar Pokémon como…$"
+
+Route103_Text_MayLetsBattle: @ 81EC7DE
+	.string "¡Oh, hola, {PLAYER}{KUN}!\p"
+	.string "Ya... Mi padre te ha regalado\n"
+	.string "un Pokémon...\p"
+	.string "Y ya que estamos aquí, podríamos\n"
+	.string "echar un combate rapidito.\p"
+	.string "Te voy a enseñar cómo entrenar\n"
+	.string "Pokémon.$"
+
+Route103_Text_MayDefeated: @ 81EC881
+	.string "¡Guau, genial!\n"
+	.string "¡{PLAYER}{KUN}, se te das bien!$"
+
+Route103_Text_MayTimeToHeadBack: @ 81EC8AE
+	.string "Aura: Creo que ya entiendo por qué\n"
+	.string "mi padre te tiene tanto aprecio.\p"
+	.string "Por ejemplo, ese Pokémon que acabas\n"
+	.string "de recibir ya te quiere un montón\p"
+	.string "Se ve que puedes hacer amistad\n"
+	.string "con los Pokémon muy fácilmente.\p"
+	.string "Bien, volvamos al Laboratorio.$"
+
+Route103_Text_BrendanRoute103Pokemon: @ 81EC989
+	.string "Brendan: Okay, so it's this one and\n"
+	.string "that one that live on Route 103…$"
+
+Route103_Text_BrendanLetsBattle: @ 81EC9CE
+	.string "Hey, it's {PLAYER}!\p"
+	.string "…Oh, yeah, Dad gave you a Pokémon.\p"
+	.string "Since we're here, how about a little\n"
+	.string "battle?\p"
+	.string "I'll teach you what being a Trainer's\n"
+	.string "about!$"
+
+Route103_Text_BrendanDefeated: @ 81ECA59
+	.string "Huh, {PLAYER}, you're not too shabby.$"
+
+Route103_Text_BrendanTimeToHeadBack: @ 81ECA79
+	.string "Brendan: I think I get it.\n"
+	.string "I think I know why my dad has his eye\l"
+	.string "out for you now.\p"
+	.string "Look, your Pokémon already likes you,\n"
+	.string "even though you just got it.\p"
+	.string "{PLAYER}, I get the feeling that you\n"
+	.string "could befriend any Pokémon with ease.\p"
+	.string "We should head back to the Lab.$"
+
+Route103_Text_ShouldHaveBroughtPotion: @ 81ECB73
+	.string "My Pokémon is staggeringly tired…\n"
+	.string "I should have brought a Potion…$"
+
+Route103_Text_ShortcutToOldale: @ 81ECBB5
+	.string "If you cross the sea from here,\n"
+	.string "it'll be a shortcut to Oldale Town.\p"
+	.string "Fufufu, that's useful, isn't it?$"
+
+Route103_Text_RouteSign: @ 81ECC1A
+	.string "Ruta 103\n"
+	.string "{DOWN_ARROW} Pueblo Escaso$"
+#else
 Route103_Text_MayRoute103Pokemon: @ 81EC7A6
 	.string "May: Let's see… The Pokémon found\n"
 	.string "on Route 103 include…$"
@@ -357,4 +422,4 @@ Route103_Text_ShortcutToOldale: @ 81ECBB5
 Route103_Text_RouteSign: @ 81ECC1A
 	.string "Route 103\n"
 	.string "{DOWN_ARROW} Oldale Town$"
-
+#endif
