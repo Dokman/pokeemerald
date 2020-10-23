@@ -37,7 +37,7 @@ OldaleTown_Mart_Pokemart_Expanded: @ 81FC27C
 	.2byte ITEM_NONE
 	release
 	end
-
+	
 OldaleTown_Mart_EventScript_Woman:: @ 81FC28A
 	lock
 	faceplayer
@@ -55,6 +55,21 @@ OldaleTown_Mart_EventScript_Boy:: @ 81FC2A9
 	msgbox OldaleTown_Mart_Text_RestoreHPWithPotion, MSGBOX_NPC
 	end
 
+#if GAME_LANGUAGE == LANGUAGE_SPANISH
+OldaleTown_Mart_Text_PokeBallsAreSoldOut: @ 81FC2B2
+	.string "No puedo comprar Poké Balls...\n"
+	.string "El encargado dice que están agotadas.$"
+
+OldaleTown_Mart_Text_ImGoingToBuyPokeBalls: @ 81FC2F3
+	.string "I'm going to buy a bunch of Poké Balls\n"
+	.string "and catch a bunch of Pokémon!$"
+
+OldaleTown_Mart_Text_RestoreHPWithPotion: @ 81FC338
+	.string "Si dañan a un Pokémon, éste pierde PS,\n"
+	.string "se debilita y no puede seguir luchando.\p"
+	.string "Para evitar que se debilite, restaura\n"
+	.string "sus PS con una Poción.$"
+#else
 OldaleTown_Mart_Text_PokeBallsAreSoldOut: @ 81FC2B2
 	.string "The clerk says they're all sold out.\n"
 	.string "I can't buy any Poké Balls.$"
@@ -68,4 +83,6 @@ OldaleTown_Mart_Text_RestoreHPWithPotion: @ 81FC338
 	.string "and faints, it won't be able to battle.\p"
 	.string "To prevent your Pokémon from fainting,\n"
 	.string "restore its HP with a Potion.$"
+#endif
+	
 
